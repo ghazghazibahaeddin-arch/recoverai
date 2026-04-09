@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecoverAI — Win Every Dispute</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- LANDING -->
+<div id="page-landing" class="page" style="display:block">
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="logo-icon">R</div>
+    RecoverAI
+  </div>
+  <div class="nav-right">
+    <button id="btn-signin" class="btn btn-outline">Sign In</button>
+    <button id="btn-start" class="btn btn-green">Start Free →</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🤖 AI-Powered Revenue Recovery</div>
+  <h1>Stop Losing Money to Chargebacks</h1>
+  <p>RecoverAI automatically detects disputes, builds winning responses, and prevents fraud — so you keep more of your revenue.</p>
+  <div class="hero-btns">
+    <button id="btn-hero-start" class="btn btn-green" style="padding:1rem 2rem;font-size:1.1rem">Start Free — No Credit Card →</button>
+  </div>
+  <p class="hero-note">We take <span>20%</span> only when you win. Zero risk.</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">$2.4M+</div><div class="stat-label">Revenue Recovered</div></div>
+  <div class="stat-item"><div class="stat-num">89%</div><div class="stat-label">Win Rate</div></div>
+  <div class="stat-item"><div class="stat-num">2,400+</div><div class="stat-label">Disputes Won</div></div>
+  <div class="stat-item"><div class="stat-num">30sec</div><div class="stat-label">Response Time</div></div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">4 simple steps to recover your money</p>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">1</div><h3>Connect</h3><p>Connect your Stripe or PayPal account in seconds</p></div>
+    <div class="step-card"><div class="step-num">2</div><h3>Detect</h3><p>AI automatically detects every dispute and chargeback</p></div>
+    <div class="step-card"><div class="step-num">3</div><h3>Build</h3><p>AI builds a complete winning response with all evidence</p></div>
+    <div class="step-card"><div class="step-num">4</div><h3>Win</h3><p>Submit and win. We take 20% only if you win</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">4 Layers of Protection</h2>
+  <p class="section-sub">Complete revenue recovery solution</p>
+  <div class="layers-grid">
+    <div class="layer-card" style="--accent:#10b981">
+      <div class="layer-num">Layer 1</div>
+      <h3>⚡ Chargeback Recovery</h3>
+      <p>AI builds winning dispute responses with invoice, logs and proof automatically</p>
+      <div class="layer-price">Free + 20% of recovery</div>
+    </div>
+    <div class="layer-card" style="--accent:#3b82f6">
+      <div class="layer-num">Layer 2</div>
+      <h3>🛡️ Fraud Prevention</h3>
+      <p>Detect suspicious transactions before they become chargebacks. Block or verify instantly</p>
+      <div class="layer-price">$29–99/month</div>
+    </div>
+    <div class="layer-card" style="--accent:#f59e0b">
+      <div class="layer-num">Layer 3</div>
+      <h3>💰 Revenue Leakage</h3>
+      <p>Find unfilled subscriptions, incomplete refunds and billing errors you never noticed</p>
+      <div class="layer-price">$49–99/month</div>
+    </div>
+    <div class="layer-card" style="--accent:#8b5cf6">
+      <div class="layer-num">Layer 4</div>
+      <h3>🚀 Full Platform</h3>
+      <p>Complete revenue recovery — chargebacks, fraud, subscriptions, hidden fees, tax recovery</p>
+      <div class="layer-price">$299/month</div>
+    </div>
+  </div>
+</div>
+
+<div class="pricing-section">
+  <div class="pricing-inner">
+    <h2 class="section-title">Simple Pricing</h2>
+    <p class="section-sub">Start free. Pay only when you win.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-amount">$0</div>
+        <div class="price-note">+ 20% of recovered amount</div>
+        <ul class="price-features">
+          <li>3 chargebacks/month</li>
+          <li>AI dispute letters</li>
+          <li>Basic fraud check</li>
+        </ul>
+        <button id="btn-buy-free" class="btn btn-outline btn-full">Start Free</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Starter</div>
+        <div class="price-amount">$49</div>
+        <div class="price-note">per month</div>
+        <ul class="price-features">
+          <li>Unlimited chargebacks</li>
+          <li>Layer 1 + Layer 2</li>
+          <li>Revenue leakage detection</li>
+          <li>Priority support</li>
+        </ul>
+        <button id="btn-buy-starter" class="btn btn-green btn-full">Get Starter</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Pro</div>
+        <div class="price-amount">$99</div>
+        <div class="price-note">per month</div>
+        <ul class="price-features">
+          <li>Everything in Starter</li>
+          <li>All 4 Layers</li>
+          <li>Full platform access</li>
+          <li>API access</li>
+          <li>Dedicated manager</li>
+        </ul>
+        <button id="btn-buy-pro" class="btn btn-green btn-full">Get Pro</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- LOGIN -->
+<div id="page-login" class="page">
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">R</div>
+    <h2 class="auth-title">Welcome Back</h2>
+    <p class="auth-sub">Sign in to your account</p>
+    <div id="login-error" class="msg-error"></div>
+    <div class="field"><label>Email</label><input type="email" id="login-email" placeholder="name@example.com"></div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="••••••••">
+    </div>
+    <div class="forgot-link"><a id="btn-forgot">Forgot password?</a></div>
+    <button id="btn-login" class="btn btn-green btn-full">Sign In</button>
+    <p class="auth-link">No account? <a id="btn-to-signup">Create one free</a></p>
+    <p class="auth-link"><a id="btn-to-landing">← Back to home</a></p>
+  </div>
+</div>
+</div>
+
+<!-- SIGNUP -->
+<div id="page-signup" class="page">
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">R</div>
+    <h2 class="auth-title">Create Free Account</h2>
+    <p class="auth-sub">Start recovering revenue today</p>
+    <div id="signup-error" class="msg-error"></div>
+    <div id="signup-success" class="msg-success"></div>
+    <div class="field"><label>Full Name</label><input type="text" id="signup-name" placeholder="John Smith"></div>
+    <div class="field"><label>Email</label><input type="email" id="signup-email" placeholder="name@example.com"></div>
+    <div class="field"><label>Password</label><input type="password" id="signup-password" placeholder="Min 8 characters"></div>
+    <button id="btn-signup" class="btn btn-green btn-full">Create Free Account</button>
+    <p class="auth-link">Have account? <a id="btn-to-login">Sign in</a></p>
+  </div>
+</div>
+</div>
+
+<!-- FORGOT -->
+<div id="page-forgot" class="page">
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo">R</div>
+    <h2 class="auth-title">Reset Password</h2>
+    <p class="auth-sub">We will send you a reset link</p>
+    <div id="forgot-error" class="msg-error"></div>
+    <div id="forgot-success" class="msg-success"></div>
+    <div class="field"><label>Email</label><input type="email" id="forgot-email" placeholder="name@example.com"></div>
+    <button id="btn-forgot-send" class="btn btn-green btn-full">Send Reset Link</button>
+    <p class="auth-link"><a id="btn-forgot-back">← Back to sign in</a></p>
+  </div>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="page-dashboard" class="page">
+<nav class="dash-nav">
+  <div class="nav-logo"><div class="logo-icon">R</div>RecoverAI</div>
+  <div class="nav-right">
+    <span id="nav-email" class="nav-email"></span>
+    <button id="btn-logout" class="btn-red">Logout</button>
+  </div>
+</nav>
+<div class="dash-content">
+  <h1 class="dash-title" id="dash-greeting">Welcome 👋</h1>
+  <p class="dash-sub">Your revenue recovery command center</p>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="kpi-val" id="dash-total-recovered">$0</div><div class="kpi-label">Total Recovered</div></div>
+    <div class="kpi-card" style="border-top-color:var(--yellow)"><div class="kpi-val" style="color:var(--yellow)" id="dash-active-disputes">0</div><div class="kpi-label">Active Disputes</div></div>
+    <div class="kpi-card" style="border-top-color:var(--red)"><div class="kpi-val" style="color:var(--red)" id="dash-revenue-risk">$0</div><div class="kpi-label">Revenue at Risk</div></div>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card" id="tool-chargeback" style="--c:#10b981">
+      <div class="tool-icon">⚡</div>
+      <div class="tool-name">Chargeback Recovery</div>
+      <div class="tool-desc">AI builds winning dispute responses in 30 seconds</div>
+      <div class="tool-arrow">Start recovering →</div>
+    </div>
+    <div class="tool-card" id="tool-fraud" style="--c:#3b82f6">
+      <div class="tool-icon">🛡️</div>
+      <div class="tool-name">Fraud Prevention</div>
+      <div class="tool-desc">Detect risky transactions before they become chargebacks</div>
+      <div class="tool-arrow">Analyze risk →</div>
+    </div>
+    <div class="tool-card" id="tool-leakage" style="--c:#f59e0b">
+      <div class="tool-icon">💰</div>
+      <div class="tool-name">Revenue Leakage</div>
+      <div class="tool-desc">Find hidden money you are losing every month</div>
+      <div class="tool-arrow">Find leaks →</div>
+    </div>
+    <div class="tool-card" id="tool-platform" style="--c:#8b5cf6">
+      <div class="tool-icon">🚀</div>
+      <div class="tool-name">Full Platform Report</div>
+      <div class="tool-desc">Complete revenue recovery analysis and action plan</div>
+      <div class="tool-arrow">Generate report →</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CHARGEBACK -->
+<div id="page-chargeback" class="page">
+<div class="feat-header">
+  <button class="btn-back" id="cb-back">← Back</button>
+  <span class="feat-title">⚡ Chargeback Recovery</span>
+</div>
+<div class="feat-content">
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val" id="cb-total">0</div><div class="stat-label">Total</div></div>
+    <div class="stat"><div class="stat-val green" id="cb-won">0</div><div class="stat-label">Won</div></div>
+    <div class="stat"><div class="stat-val yellow" id="cb-pending">0</div><div class="stat-label">Pending</div></div>
+  </div>
+  <div class="card">
+    <h3>New Chargeback Dispute</h3>
+    <div class="form-row">
+      <div class="field"><label>Customer Name</label><input type="text" id="cb-customer" placeholder="John Smith"></div>
+      <div class="field"><label>Amount ($)</label><input type="number" id="cb-amount" placeholder="99.99"></div>
+    </div>
+    <div class="form-row">
+      <div class="field"><label>Transaction Date</label><input type="date" id="cb-date"></div>
+      <div class="field"><label>Tracking Number</label><input type="text" id="cb-tracking" placeholder="Optional"></div>
+    </div>
+    <div class="field">
+      <label>Dispute Reason</label>
+      <select id="cb-reason">
+        <option value="item_not_received">Item Not Received</option>
+        <option value="not_as_described">Not As Described</option>
+        <option value="unauthorized">Unauthorized Transaction</option>
+        <option value="duplicate">Duplicate Charge</option>
+        <option value="credit_not_processed">Credit Not Processed</option>
+      </select>
+    </div>
+    <div class="field"><label>Product/Service Description</label><textarea id="cb-desc" placeholder="Describe the product or service in detail..."></textarea></div>
+    <button id="btn-cb-generate" class="btn btn-green btn-full">🤖 Generate Winning Dispute Letter</button>
+  </div>
+  <div id="cb-result" style="display:none" class="result-card">
+    <h4>✅ Dispute Letter Ready to Submit</h4>
+    <div id="cb-result-text" class="result-text"></div>
+    <button id="btn-cb-copy" class="btn btn-outline" style="margin-top:1rem">📋 Copy Letter</button>
+  </div>
+</div>
+</div>
+
+<!-- FRAUD -->
+<div id="page-fraud" class="page">
+<div class="feat-header">
+  <button class="btn-back" id="fraud-back">← Back</button>
+  <span class="feat-title">🛡️ Fraud Prevention</span>
+</div>
+<div class="feat-content">
+  <div class="card">
+    <h3>Analyze Transaction Risk</h3>
+    <div class="form-row">
+      <div class="field"><label>Customer Name</label><input type="text" id="fraud-customer" placeholder="John Smith"></div>
+      <div class="field"><label>Transaction Amount ($)</label><input type="number" id="fraud-amount" placeholder="299.99"></div>
+    </div>
+    <div class="form-row">
+      <div class="field"><label>Customer Email</label><input type="email" id="fraud-email" placeholder="customer@email.com"></div>
+      <div class="field"><label>Country</label><input type="text" id="fraud-country" placeholder="US, UK, etc."></div>
+    </div>
+    <div class="field"><label>Transaction History (optional)</label><textarea id="fraud-history" placeholder="Any previous orders, refunds, disputes..."></textarea></div>
+    <button id="btn-fraud-analyze" class="btn btn-green btn-full">🔍 Analyze Fraud Risk</button>
+  </div>
+  <div id="fraud-result" style="display:none" class="card">
+    <div class="risk-score">
+      <div id="fraud-score">0/10</div>
+      <div>Risk Score</div>
+    </div>
+    <div id="fraud-recommendation" class="alert-box alert-yellow" style="margin-bottom:1rem"></div>
+    <h4>Risk Factors</h4>
+    <div id="fraud-reasons"></div>
+  </div>
+</div>
+</div>
+
+<!-- LEAKAGE -->
+<div id="page-leakage" class="page">
+<div class="feat-header">
+  <button class="btn-back" id="leakage-back">← Back</button>
+  <span class="feat-title">💰 Revenue Leakage</span>
+</div>
+<div class="feat-content">
+  <div class="card">
+    <h3>Find Hidden Revenue Losses</h3>
+    <div class="field">
+      <label>Paste Your Transaction Data or Stripe Export</label>
+      <textarea id="leakage-text" rows="8" placeholder="Paste transactions, subscriptions, or Stripe data here...&#10;&#10;Example:&#10;John Smith - subscription $99/mo - last charged 3 months ago&#10;Refund pending for order #1234 - $250&#10;Failed payment retry - Sarah Jones - $149"></textarea>
+    </div>
+    <button id="btn-leakage-analyze" class="btn btn-green btn-full">🔍 Find Revenue Leaks</button>
+  </div>
+  <div id="leakage-result" style="display:none">
+    <div class="big-num">
+      <div class="big-num-val" id="leakage-total">$0</div>
+      <div class="big-num-label">Monthly Revenue Leakage Found</div>
+      <div class="big-num-save" id="leakage-summary"></div>
+    </div>
+    <div class="card">
+      <h3>Leakage Items Found</h3>
+      <div id="leakage-items"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PLATFORM -->
+<div id="page-platform" class="page">
+<div class="feat-header">
+  <button class="btn-back" id="platform-back">← Back</button>
+  <span class="feat-title">🚀 Full Platform Report</span>
+</div>
+<div class="feat-content">
+  <div class="card">
+    <h3>Generate Complete Revenue Recovery Report</h3>
+    <div class="form-row">
+      <div class="field"><label>Monthly Revenue ($)</label><input type="number" id="platform-revenue" placeholder="50000"></div>
+      <div class="field"><label>Monthly Chargebacks ($)</label><input type="number" id="platform-chargebacks" placeholder="1500"></div>
+    </div>
+    <div class="form-row">
+      <div class="field"><label>Open Disputes (#)</label><input type="number" id="platform-disputes" placeholder="12"></div>
+      <div class="field"><label>Subscription Issues (#)</label><input type="number" id="platform-subscriptions" placeholder="5"></div>
+    </div>
+    <button id="btn-platform-report" class="btn btn-green btn-full">📊 Generate Full Report</button>
+  </div>
+  <div id="platform-result" style="display:none" class="result-card">
+    <h4>📊 Revenue Recovery Report</h4>
+    <div id="platform-result-text" class="result-text"></div>
+  </div>
+</div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/chargeback.js"></script>
+<script src="js/fraud.js"></script>
+<script src="js/leakage.js"></script>
+<script src="js/platform.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/app.js"></script>
+</body>
+  </html>
