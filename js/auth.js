@@ -4,7 +4,6 @@ const AUTH = {
   init: function() {
     var self = this;
 
-    // Check saved session
     var saved = localStorage.getItem('cb_user');
     if (saved) {
       try {
@@ -18,16 +17,9 @@ const AUTH = {
       NAV.go('page-landing');
     }
 
-    // Login
     NAV.bind('btn-login', function() { self.login(); });
-
-    // Signup
     NAV.bind('btn-signup', function() { self.signup(); });
-
-    // Logout
     NAV.bind('btn-logout', function() { self.logout(); });
-
-    // Forgot
     NAV.bind('btn-forgot-send', function() { self.forgot(); });
   },
 
@@ -36,7 +28,10 @@ const AUTH = {
     var pass = document.getElementById('login-password').value;
     var btn = document.getElementById('btn-login');
 
-    if (!email || !pass) { this.showMsg('login-error', 'Please enter email and password'); return; }
+    if (!email || !pass) {
+      this.showMsg('login-error', 'Please enter email and password');
+      return;
+    }
 
     btn.disabled = true;
     btn.textContent = 'Signing in...';
@@ -44,14 +39,19 @@ const AUTH = {
     try {
       var res = await fetch(CONFIG.SUPABASE_URL + '/auth/v1/token?grant_type=password', {
         method: 'POST',
-        headers: { 'apikey': CONFIG.SUPABASE_KEY, 'Content-Type': 'application/json' },
+        headers: {
+          'apikey': CONFIG.SUPABASE_KEY,
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ email: email, password: pass })
       });
       var data = await res.json();
+
       if (data.error || data.error_description) {
         this.showMsg('login-error', 'Invalid email or password');
         return;
       }
+
       this.user = {
         token: data.access_token,
         email: email,
@@ -60,8 +60,9 @@ const AUTH = {
       localStorage.setItem('cb_user', JSON.stringify(this.user));
       this.updateUI();
       NAV.go('page-dashboard');
+
     } catch(e) {
-      this.showMsg('login-error', 'Connection error');
+      this.showMsg('login-error', 'Connection error. Please try again.');
     } finally {
       btn.disabled = false;
       btn.textContent = 'Sign In';
@@ -74,8 +75,14 @@ const AUTH = {
     var pass = document.getElementById('signup-password').value;
     var btn = document.getElementById('btn-signup');
 
-    if (!name || !email || !pass) { this.showMsg('signup-error', 'Please fill all fields'); return; }
-    if (pass.length < 8) { this.showMsg('signup-error', 'Password must be at least 8 characters'); return; }
+    if (!name || !email || !pass) {
+      this.showMsg('signup-error', 'Please fill all fields');
+      return;
+    }
+    if (pass.length < 8) {
+      this.showMsg('signup-error', 'Password must be at least 8 characters');
+      return;
+    }
 
     btn.disabled = true;
     btn.textContent = 'Creating account...';
@@ -83,21 +90,47 @@ const AUTH = {
     try {
       var res = await fetch(CONFIG.SUPABASE_URL + '/auth/v1/signup', {
         method: 'POST',
-        headers: { 'apikey': CONFIG.SUPABASE_KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, password: pass, data: { full_name: name } })
+        headers: {
+          'apikey': CONFIG.SUPABASE_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          password: pass,
+          data: { full_name: name }
+        })
       });
       var data = await res.json();
-      if (data.error) { this.showMsg('signup-error', data.error.message || 'Signup error'); return; }
+
+      if (data.error) {
+        this.showMsg('signup-error', data.error.message || 'Signup error');
+        return;
+      }
+
       if (data.access_token) {
-        this.user = { token: data.access_token, email: email, name: name };
+        this.user = {
+          token: data.access_token,
+          email: email,
+          name: name
+        };
+        localStorage.setItem('cb_user', JSON.stringify(this.user));
+        this.updateUI();
+        NAV.go('page-dashboard');
+      } else if (data.user) {
+        this.user = {
+          token: 'temp',
+          email: email,
+          name: name
+        };
         localStorage.setItem('cb_user', JSON.stringify(this.user));
         this.updateUI();
         NAV.go('page-dashboard');
       } else {
-        this.showMsg('signup-success', 'Account created! Check your email.');
+        this.showMsg('signup-success', 'Account created! You can now sign in.');
       }
+
     } catch(e) {
-      this.showMsg('signup-error', 'Connection error');
+      this.showMsg('signup-error', 'Connection error. Please try again.');
     } finally {
       btn.disabled = false;
       btn.textContent = 'Create Free Account';
@@ -106,16 +139,22 @@ const AUTH = {
 
   forgot: async function() {
     var email = document.getElementById('forgot-email').value.trim();
-    if (!email) { this.showMsg('forgot-error', 'Please enter your email'); return; }
+    if (!email) {
+      this.showMsg('forgot-error', 'Please enter your email');
+      return;
+    }
     try {
       await fetch(CONFIG.SUPABASE_URL + '/auth/v1/recover', {
         method: 'POST',
-        headers: { 'apikey': CONFIG.SUPABASE_KEY, 'Content-Type': 'application/json' },
+        headers: {
+          'apikey': CONFIG.SUPABASE_KEY,
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ email: email })
       });
       this.showMsg('forgot-success', 'Reset link sent! Check your email.');
     } catch(e) {
-      this.showMsg('forgot-error', 'Error sending reset link');
+      this.showMsg('forgot-error', 'Error sending reset link.');
     }
   },
 
