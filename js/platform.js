@@ -1,7 +1,8 @@
 const PLATFORM = {
   init: function() {
     var self = this;
-    NAV.bind('btn-platform-report', function() { self.generateReport(); });
+    var btn = document.getElementById('btn-platform-report');
+    if (btn) btn.addEventListener('click', function() { self.generateReport(); });
   },
 
   generateReport: async function() {
@@ -12,7 +13,9 @@ const PLATFORM = {
 
     if (!revenue) { alert('Please enter monthly revenue'); return; }
 
-    AI.setLoading('btn-platform-report', true, '📊 Generate Report');
+    var btn = document.getElementById('btn-platform-report');
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
 
     try {
       var prompt = 'You are an expert CFO. Generate a complete revenue recovery report.\n\n' +
@@ -29,15 +32,30 @@ const PLATFORM = {
         '6. 30-day action plan\n\n' +
         'Be specific with numbers and actionable steps.';
 
-      var response = await AI.call(prompt);
+      var res = await fetch(CONFIG.WORKER, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'llama-3.3-70b-versatile',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 1500
+        })
+      });
 
-      document.getElementById('platform-result-text').textContent = response;
+      var data = await res.json();
+      if (!data.choices || !data.choices[0]) {
+        alert('AI error: ' + JSON.stringify(data));
+        return;
+      }
+
+      document.getElementById('platform-result-text').textContent = data.choices[0].message.content;
       document.getElementById('platform-result').style.display = 'block';
 
     } catch(e) {
-      alert('Report generation error. Please try again.');
+      alert('Error: ' + e.message);
     } finally {
-      AI.setLoading('btn-platform-report', false, '📊 Generate Report');
+      btn.disabled = false;
+      btn.textContent = '📊 Generate Full Report';
     }
   }
 };
