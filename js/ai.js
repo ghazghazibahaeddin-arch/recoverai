@@ -8,14 +8,14 @@ const AI = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama3-70b-8192',
+        model: 'llama-3.3-70b-versatile',
         messages: messages,
         max_tokens: 1500,
         temperature: 0.7
       })
     });
     var data = await res.json();
-    if (!data.choices) throw new Error('AI error');
+    if (!data.choices || !data.choices[0]) throw new Error(JSON.stringify(data));
     return data.choices[0].message.content;
   },
 
