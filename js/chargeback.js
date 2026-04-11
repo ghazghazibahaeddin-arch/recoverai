@@ -46,7 +46,11 @@ const CHARGEBACK = {
       });
 
       var data = await res.json();
-      var text = data.choices[0].message.content;
+      if (!data.choices || !data.choices[0]) {
+  alert('AI error: ' + JSON.stringify(data));
+  return;
+}
+var text = data.choices[0].message.content;
 
       document.getElementById('cb-result-text').textContent = text;
       document.getElementById('cb-result').style.display = 'block';
