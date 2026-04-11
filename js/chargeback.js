@@ -30,16 +30,25 @@ const CHARGEBACK = {
     btn.textContent = 'Generating...';
 
     try {
-      var prompt = 'Write a professional chargeback dispute letter.\nCustomer: ' + customer +
-        '\nAmount: $' + amount + '\nDate: ' + date + '\nReason: ' + reason +
-        '\nProduct: ' + desc + '\nTracking: ' + (tracking || 'None') +
-        '\n\nWrite a complete winning dispute letter.';
+      var prompt = 'Write a professional chargeback dispute letter that maximizes winning chances.\n\n' +
+        'Customer: ' + customer + '\n' +
+        'Amount: $' + amount + '\n' +
+        'Date: ' + date + '\n' +
+        'Reason: ' + reason + '\n' +
+        'Product/Service: ' + desc + '\n' +
+        'Tracking: ' + (tracking || 'Not available') + '\n\n' +
+        'Include:\n' +
+        '1. Professional introduction\n' +
+        '2. Clear transaction timeline\n' +
+        '3. Evidence summary\n' +
+        '4. Request to reverse chargeback\n' +
+        '5. Professional closing';
 
-      var res = await fetch('https://clearcfo-proxy.ghazghazibahaeddin.workers.dev', {
+      var res = await fetch(CONFIG.WORKER, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'llama3-70b-8192',
+          model: 'llama-3.3-70b-versatile',
           messages: [{ role: 'user', content: prompt }],
           max_tokens: 1500
         })
@@ -47,10 +56,10 @@ const CHARGEBACK = {
 
       var data = await res.json();
       if (!data.choices || !data.choices[0]) {
-  alert('AI error: ' + JSON.stringify(data));
-  return;
-}
-var text = data.choices[0].message.content;
+        alert('AI error: ' + JSON.stringify(data));
+        return;
+      }
+      var text = data.choices[0].message.content;
 
       document.getElementById('cb-result-text').textContent = text;
       document.getElementById('cb-result').style.display = 'block';
